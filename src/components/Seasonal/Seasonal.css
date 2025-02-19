@@ -1,0 +1,89 @@
+/* Center the whole content */
+.seasonal-container {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Year navigation buttons */
+.year-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.year-navigation button {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 10px 18px; /* Slightly larger for better clickability */
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background 0.2s ease-in-out;
+}
+
+.year-navigation button:hover {
+    background: #555;
+}
+
+/* Season buttons */
+.seasonal-container button {
+    background: #444;
+    color: white;
+    border: none;
+    padding: 12px 16px; /* Slightly larger */
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    margin: 5px;
+    transition: background 0.2s ease-in-out;
+}
+
+.seasonal-container button:disabled {
+    background: #888;
+    cursor: default;
+}
+
+/* Anime Grid */
+.anime-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Adjust column layout */
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    max-width: 1200px; /* Prevents it from getting too stretched */
+    margin: 0 auto; /* Centers the grid */
+}
+
+/* Anime Card */
+.anime-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Anime Image */
+.anime-card img {
+    width: 100%;
+    max-width: 220px; /* Increased for better visibility */
+    height: 300px; /* Fixed height for consistency */
+    object-fit: cover; /* Prevents image stretching */
+    border-radius: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.anime-card img:hover {
+    transform: scale(1.05);
+}
+
+/* Anime Title */
+.anime-title {
+    margin-top: 8px;
+    font-size: 16px; /* Slightly larger */
+    font-weight: bold;
+    color: white;
+    max-width: 220px;
+}

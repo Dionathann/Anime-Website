@@ -1,0 +1,43 @@
+.anime-details {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 10px;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+.anime-header {
+    width: 100%;
+    display: flex;
+    align-items: center; /* Align items at the center */
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.anime-cover {
+    width: 25%;
+    border-radius: 5px;
+}
+
+.anime-info {
+    width: 70%;
+    flex-grow: 1;
+    align-self: flex-start; /* Aligns text section to the top */
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.synopsis {
+    margin-top: 20px;
+}
+
+.synopsis h2 {
+    margin-bottom: 5px;
+}
+
+.error-message {
+    color: red;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+}
