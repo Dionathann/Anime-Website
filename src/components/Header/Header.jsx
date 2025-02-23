@@ -1,15 +1,44 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
 
 function Header() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [search, setSearch] = useState("");
+  const [user, setUser] = useState(localStorage.getItem("user") || null);
   const navigate = useNavigate();
-  const user = localStorage.getItem("user");
+
+  useEffect(() => {
+    const expirationCheck = () => {
+      const now = Date.now();
+      const expire = localStorage.getItem("expiresAt");
+
+      if (!expire || now > Number(expire)) {
+        console.log("Token Expired");
+
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        localStorage.removeItem("expiresAt");
+        setIsAuthenticated(false);
+        setUser(null);
+      } else {
+        setIsAuthenticated(true);
+      }
+    };
+
+    expirationCheck();
+    const interval = setInterval(expirationCheck, 10000);
+
+    return () => clearInterval(interval);
+  }, [navigate, user]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    localStorage.removeItem("expiresAt");
+
+    setIsAuthenticated(false);
+    setUser(null);
     navigate("/login");
   };
 
@@ -30,19 +59,19 @@ function Header() {
 
       <ul className="nav-links">
         <li><Link to="/top-anime">Top Anime</Link></li>
-        <li><Link to="/genres">By Genres</Link></li>
+        <li><Link to="/genres">Genres</Link></li>
         <li><Link to={`/seasonal/${year}/${season}`}>Seasonal</Link></li>
-        {user ? (
-            <>
-              <li>Welcome, {user}!</li>
-              <li><button onClick={handleLogout}>Logout</button></li>
-            </>
-          ) : (
-            <>
-              <li><Link to="/login">Login</Link></li>
-              <li><Link to="/signup">Sign Up</Link></li>
-            </>
-          )}
+        {isAuthenticated ? (
+          <>
+            <li className="user">Welcome, {localStorage.getItem("user")}!</li>
+            <li><button className="logout-btn" onClick={handleLogout}>Logout</button></li>
+          </>
+        ) : (
+          <>
+            <li><Link to="/login">Login</Link></li>
+            <li><Link to="/signup">Sign Up</Link></li>
+          </>
+        )}
       </ul>
 
       <form onSubmit={handleSearch} className="search-bar">
@@ -58,7 +87,7 @@ function Header() {
   );
 }
 
-function GetSeason(){
+function GetSeason() {
   const currentYear = new Date().getFullYear();
   const currentMonth = new Date().getMonth();
 

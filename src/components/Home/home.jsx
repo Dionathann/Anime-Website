@@ -36,8 +36,6 @@ function Home(){
 }
 
 function AnimeDisplay({anime, navigate}){
-    console.log(anime.mal_id);
-
     return(
         <div >
             <div className="grid-container">

@@ -6,8 +6,8 @@ import Header from "../Header/Header";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -15,19 +15,27 @@ function Login() {
 
     try {
       const response = await axios.post("http://localhost:5000/auth/login", { email, password });
-      console.log(response.data);
+      const expiresAt = Date.now() + 60 * 60 * 1000;
+      const name = response.data.user.userName;
+      console.log(parseInt(expiresAt));
       
-      alert(`Welcome ${response.data.user.userName}!`);
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("user", name);
+      localStorage.setItem("expiresAt", expiresAt);
+
+      alert(`Welcome ${name}!`);
+
       navigate("/");
     } catch (error) {
       console.error("❌ Signup failed:", error.response?.data || error.message);
+
       setError(error.response?.data?.error || "Something went wrong");
     }
   };
 
   return (
 
-<>
+    <>
       <Header />
       <div className="login-container">
         <div className="login-box">

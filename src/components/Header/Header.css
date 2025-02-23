@@ -1,62 +1,85 @@
-/* Reset default styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* Header Styles */
 .navbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
-  background-color: #1e1e2e;
+  justify-content: space-between;
+  padding: 15px 40px;
+  background-color: #1a1a2e;
   color: white;
-  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Logo Styling */
 .logo a {
-  color: white;
-  text-decoration: none;
   font-size: 24px;
   font-weight: bold;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
+.logo a:hover {
+  color: #ffcc00;
+}
+
+/* Navigation Links */
 .nav-links {
-  list-style: none;
   display: flex;
-  gap: 20px;
-}
-
-.nav-links li {
-  display: inline;
+  gap: 25px;
+  list-style: none;
 }
 
 .nav-links a {
   color: white;
   text-decoration: none;
-  font-size: 18px;
-  transition: color 0.3s;
+  font-size: 16px;
+  transition: color 0.3s ease-in-out;
 }
 
 .nav-links a:hover {
   color: #ffcc00;
 }
 
+/* User Info */
+.user {
+  font-weight: bold;
+  color: #ffcc00;
+}
+
+/* Logout Button */
+.logout-btn {
+  background: #ff4b5c;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #ff1e3c;
+}
+
+/* Search Bar */
 .search-bar {
   display: flex;
   align-items: center;
-  background-color: white;
+  background: white;
+  border-radius: 25px;
   padding: 5px 10px;
-  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
 }
 
 .search-bar input {
   border: none;
   outline: none;
-  padding: 5px;
-  font-size: 16px;
-  width: 150px;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 20px;
+  width: 200px;
+  background: transparent;
+  color: black;
 }
 
 .search-bar button {
@@ -64,5 +87,10 @@
   border: none;
   cursor: pointer;
   font-size: 18px;
-  padding: 5px;
+  margin-left: 5px;
+  color: #ffcc00;
+}
+
+.search-bar button:hover {
+  color: #ff9900;
 }
