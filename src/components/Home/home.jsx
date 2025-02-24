@@ -24,7 +24,7 @@ function Home(){
         }, []);
 
     return(
-        <div>
+        <div className="page">
             <Header />
 
             <h1>Currently Airing</h1>

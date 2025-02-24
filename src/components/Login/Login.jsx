@@ -35,7 +35,7 @@ function Login() {
 
   return (
 
-    <>
+    <div className="page">
       <Header />
       <div className="login-container">
         <div className="login-box">
@@ -69,7 +69,7 @@ function Login() {
           Don`t have an account? <a href="/signup">Sign Up</a>
         </p>
       </div>
-    </>
+    </div>
   );
 }
 

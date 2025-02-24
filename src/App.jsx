@@ -9,6 +9,7 @@ import SearchResults from "./components/SearchResults/SearchResults";
 import AnimeDetails from "./components/AnimeDetails/AnimeDetails";
 import Signup from "./components/Signup/Signup";
 import Login from "./components/Login/Login";
+
 function App(){
   return(
     <Router>
