@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import "./AnimeDetails.css"; // Custom styling
-
+import "./AnimeDetails.css"; 
+import Header from "../Header/Header";
 function AnimeDetails() {
     const location = useLocation();
     const anime = location.state?.anime || JSON.parse(localStorage.getItem("anime"));
@@ -17,6 +17,9 @@ function AnimeDetails() {
     }
 
     return (
+
+        <>
+        <Header />
         <div className="anime-details">
             <h1>{anime.title}</h1>
 
@@ -38,7 +41,7 @@ function AnimeDetails() {
                 <h2>Synopsis</h2>
                 <p>{anime.synopsis}</p>
             </div>
-        </div>
+        </div></>
     );
 }
 

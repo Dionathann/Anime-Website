@@ -4,6 +4,25 @@
     padding: 20px;
 }
 
+.season-tabs{
+    display: flex;
+    justify-content: center;
+
+    gap: 30px;
+}
+
+.season-tabs button {
+    padding: 10px 20px; /* Ensure buttons have enough padding */
+    text-align: center;
+    min-width: 80px; /* Ensures buttons are the same size */
+}
+
+.season-tabs span {
+    padding-top: ;
+    display: flex;
+    justify-content: center;
+}
+
 /* Year navigation buttons */
 .year-navigation {
     display: flex;

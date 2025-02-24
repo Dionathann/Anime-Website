@@ -46,8 +46,9 @@ function Header() {
 
   const handleSearch = (e) => {
     e.preventDefault();
+    if(search === "") return;
     if (search.trim()) {
-      navigate(`/search?q=${search}`);
+      navigate(`/search?q=${encodeURIComponent(search)}`);
     }
   };
 
