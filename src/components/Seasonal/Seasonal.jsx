@@ -61,7 +61,7 @@ function Seasonal() {
         <div className="seasonal-container">
             <h2>Seasonal Anime - {season.charAt(0).toUpperCase() + season.slice(1)} {year}</h2>
 
-            <div className="season-tabs">
+            <div className="year-navigation">
                 <button onClick={() => handleChangeYear(currentYear - 1)}>← {currentYear - 1}</button>
                 <span>{currentYear}</span>
                 <button onClick={() => handleChangeYear(currentYear + 1)}>{currentYear + 1} →</button>

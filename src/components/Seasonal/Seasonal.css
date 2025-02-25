@@ -7,19 +7,20 @@
 .season-tabs{
     display: flex;
     justify-content: center;
-
+    align-items: center;
     gap: 30px;
 }
 
 .season-tabs button {
-    padding: 10px 20px; /* Ensure buttons have enough padding */
+    padding: 10px 20px;
     text-align: center;
-    min-width: 80px; /* Ensures buttons are the same size */
+    min-width: 80px; 
 }
 
 .season-tabs span {
     display: flex;
     justify-content: center;
+    font-size: 19px;
 }
 
 /* Year navigation buttons */
@@ -68,9 +69,9 @@
 .anime-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Adjust column layout */
-    gap: 20px;
+    gap: 40px;
     justify-content: center;
-    padding: 20px;
+    padding: 10px;
     max-width: 1200px; /* Prevents it from getting too stretched */
     margin: 0 auto; /* Centers the grid */
 }
@@ -79,29 +80,38 @@
 .anime-card {
     display: flex;
     flex-direction: column;
+    justify-content: flex-end; /* Ensures the title is always at the bottom */
     align-items: center;
     text-align: center;
+    height: 100%;
+    max-width: 220px;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
 }
 
 /* Anime Image */
 .anime-card img {
     width: 100%;
-    max-width: 220px; /* Increased for better visibility */
-    height: 300px; /* Fixed height for consistency */
-    object-fit: cover; /* Prevents image stretching */
+    max-width: 220px;
+    height: 100%;
+    object-fit: cover;
     border-radius: 10px;
-    transition: transform 0.2s ease-in-out;
 }
 
-.anime-card img:hover {
-    transform: scale(1.05);
-}
+/* .anime-card img:hover {
+    transform: scale(1.1);
+} */
 
 /* Anime Title */
 .anime-title {
-    margin-top: 8px;
-    font-size: 16px; /* Slightly larger */
-    font-weight: bold;
-    color: white;
-    max-width: 220px;
+    height: 20%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: rgb(80, 10, 10);
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay for readability */
+    text-align: center;
+    padding: 8px;
+    border-radius: 0 0 10px 10px;
 }
