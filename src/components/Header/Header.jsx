@@ -54,36 +54,64 @@ function Header() {
 
   return (
     <nav className="navbar">
-      <div className="logo">
-        <Link to="/">Anime Data</Link>
+      <div>
+        <div className="logo">
+          <Link to="/">AniQu</Link>
+        </div>
+
+        <ul className="nav-links">
+          <li>
+            <Link to="/top-anime">Top Anime</Link>
+          </li>
+          <li>
+            <Link to="/genres">Genres</Link>
+          </li>
+          <li>
+            <Link to={`/seasonal/${year}/${season}`}>
+              Seasonal
+            </Link>
+          </li>
+        </ul>
       </div>
 
-      <ul className="nav-links">
-        <li><Link to="/top-anime">Top Anime</Link></li>
-        <li><Link to="/genres">Genres</Link></li>
-        <li><Link to={`/seasonal/${year}/${season}`}>Seasonal</Link></li>
+      <div>
         {isAuthenticated ? (
           <>
-            <li className="user">Welcome, {localStorage.getItem("user")}!</li>
-            <li><button className="logout-btn" onClick={handleLogout}>Logout</button></li>
+            <li className="user">
+              Welcome, {localStorage.getItem("user")}!
+            </li>
+            <li>
+              <button
+                className="logout-btn"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </li>
           </>
         ) : (
           <>
-            <li><Link to="/login">Login</Link></li>
-            <li><Link to="/signup">Sign Up</Link></li>
+            <li >
+              <Link to="/login" className="login">Login</Link>
+            </li>
+            <li >
+              <Link to="/signup" className="signup">Sign Up</Link>
+            </li>
           </>
         )}
-      </ul>
-
-      <form onSubmit={handleSearch} className="search-bar">
-        <input
-          type="text"
-          placeholder="Search Anime..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <button type="submit">🔍</button>
-      </form>
+        <form
+          onSubmit={handleSearch}
+          className="search-bar"
+        >
+          <input
+            type="text"
+            placeholder="Search Anime..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <button type="submit">🔍</button>
+        </form>
+      </div>
     </nav>
   );
 }

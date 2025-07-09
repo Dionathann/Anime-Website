@@ -17,6 +17,8 @@ function Login() {
       const response = await axios.post("http://localhost:5000/auth/login", { email, password });
       const expiresAt = Date.now() + 60 * 60 * 1000;
       const name = response.data.user.userName;
+      console.log(response);
+      
       console.log(parseInt(expiresAt));
       
       localStorage.setItem("token", response.data.token);

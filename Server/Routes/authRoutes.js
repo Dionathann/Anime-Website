@@ -4,7 +4,6 @@ import express from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../Model/User.js";
-import client from "../PGAdminDatabase/databasepg.js";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -20,29 +19,17 @@ router.post("/signup", async (req, res) => {
         return res.status(400).json({error: "User already exists in MongoDB"});
     }
 
-    console.log("Checking PostgreSQL for existing user...");
-    const userExist = await client.query("SELECT * FROM users WHERE email = $1", [email]);
-    if(userExist.rows.length > 0){
-        return res.status(400).json({error: "User already exists in PostgreSQL"});
-    }
-
     const hashedPassword = await bcrypt.hash(password, 10);
     console.log("✅ Password hashed");
 
     console.log("Making New User...");
 
     try{
-        //MongoDB
         console.log("Creating User to MongoDB...");
         const newUser = new User({userName, email, password: hashedPassword});
         console.log("User object:", newUser);
         await newUser.save();
         console.log("✅ User MongoDB registered successfully");
-
-        //PGAdmin
-        console.log("Inserting user into PostgreSQL...");
-        const addUser = await client.query("INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING *", [userName, email, hashedPassword]);
-        console.log("✅ User PGAdmin registered successfully:", addUser.rows[0]);
         
         res.status(201).json({
             Message: "User registered successfully"
@@ -60,13 +47,13 @@ router.post("/login", async (req, res) => {
     try{
         //Check in MongoDB
         let user = await User.findOne({email});
-        let userQuery = await client.query("SELECT * FROM users WHERE email = $1", [email]);
         
-        if(!user && !userQuery){
+        console.log(user);
+        
+
+        if(!user){
             return res.status(401).json({ error: "User not found" });
         }
-
-        user = userQuery.rows[0];
 
         const passwordMatch = await bcrypt.compare(password, user.password);
 
@@ -81,7 +68,7 @@ router.post("/login", async (req, res) => {
             },
             process.env.JWT_SECRET,
             {
-                expiresIn: "1m"
+                expiresIn: "5m"
             }
         );
 
@@ -89,13 +76,13 @@ router.post("/login", async (req, res) => {
             { 
                 message: "Login successful", 
                 token, 
-                user: {  email: user.email, userName: user.name }
+                user: {  email: user.email, userName: user.userName }
             }
         );
     }
     catch(err){
         console.error("Login error:", err);
-        return res.status(400).json({ error: "Error" });
+        return res.status(400).json({ error: "Error 404" });
     }
 })
 

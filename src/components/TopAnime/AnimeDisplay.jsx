@@ -4,14 +4,14 @@ import { useNavigate } from "react-router-dom";
 function AnimeDisplay({anime}){
     const Navigate = useNavigate();
     return(
-        <div >
-            <div className="grid-container">
+        <div className="top-anime-container">
+            <div className="top-anime-grid-container">
                 {anime.map((anime) => (
-                    <div key={anime.mal_id} className="p-4 bg-white shadow rounded">
+                    <div key={anime.mal_id} className="top-anime-grid-item">
                         <img
                             src={anime.images.jpg.image_url}
                             alt={anime.title}
-                            className="w-full h-48 object-cover rounded"
+                            className="top-anime-cover"
                             onClick={() => Navigate(`/anime/${anime.mal_id}`, { state: { anime : anime } })}
                         />
                         <h3 className="mt-2 font-bold">{anime.title}</h3>

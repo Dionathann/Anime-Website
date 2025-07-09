@@ -2,12 +2,33 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
 }
+.top-anime-container{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
 
-.grid-container {
+.top-anime-grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 rows */
     grid-auto-flow: row; /* Fill columns first */
     gap: 10px;
-    padding: 20px;
     justify-content: center;
+}
+
+.top-anime-grid-container {
+    width: auto;
+    height: auto;
+    margin-bottom: 70px;
+}
+
+.top-anime-cover{
+    width: auto;
+    height: 350px;
+    transition: ease-in-out 0.3s;
+}
+
+.top-anime-cover:hover{
+    cursor: pointer;
+    transform: scale(1.1);
 }

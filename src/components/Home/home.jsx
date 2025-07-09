@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Header from "../Header/Header";
-import "./Home.css";
+import "./home.css";
 
 
 let url = "https://api.jikan.moe/v4/seasons/now";
@@ -37,17 +37,17 @@ function Home(){
 
 function AnimeDisplay({anime, navigate}){
     return(
-        <div >
-            <div className="grid-container">
+        <div className="home-anime-container" >
+            <div className="home-grid-container">
                 {anime.map((anime) => (
-                    <div key={anime.mal_id} className="p-4 bg-white shadow rounded">
+                    <div key={anime.mal_id} className="home-grid-item">
                         <img
                             src={anime.images.jpg.image_url}
                             alt={anime.title}
                             onClick={() => {
                                 navigate(`/anime/${anime.mal_id}`, { state: { anime : anime } });}
                             }
-                            className="w-full h-48 object-cover rounded"
+                            className="home-anime-cover"
                         />
                         <h3 className="mt-2 font-bold">{anime.title}</h3>
                         <p>Score: {anime.score}</p> 

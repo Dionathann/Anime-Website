@@ -8,11 +8,36 @@ body {
     margin: 0;
 }
 
-.grid-container {
+.home-anime-container{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.home-grid-container {
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 rows */
-    grid-auto-flow: row; /* Fill columns first */
+    grid-template-columns: repeat(3 , 1fr);
+    grid-auto-flow: row;
     gap: 10px;
-    padding: 20px;
     justify-content: center;
+    padding: 0px;
+}
+
+.home-grid-item{
+    width: auto;
+    height: auto;
+    margin-bottom: 70px;
+}
+
+.home-anime-cover{
+    width: auto;
+    height: 350px;
+    object-fit: cover;
+    transition: ease-in-out 0.3s;
+}
+
+.home-anime-cover:hover{
+    cursor: pointer;
+    transform: scale(1.1);
 }

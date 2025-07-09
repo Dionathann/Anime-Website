@@ -1,26 +1,35 @@
-
+li {
+  list-style-type: none;
+}
 /* Header Styles */
 .navbar { 
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 40px;
+  padding: 10px 40px;
   background-color: #35353b;
   color: white;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 50px ;
+}
+
+.navbar > div {
+  display: flex;
+  align-items: center;
 }
 
 /* Logo Styling */
 .logo a {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
   color: white;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.5s;
+  margin-right: 20px;
 }
 
 .logo a:hover {
-  color: #ffcc00;
+  color: #8f8f8f;
 }
 
 /* Navigation Links */
@@ -38,13 +47,14 @@
 }
 
 .nav-links a:hover {
-  color: #ffcc00;
+  color: #8f8f8f;
 }
 
 /* User Info */
 .user {
   font-weight: bold;
-  color: #ffcc00;
+  color: white;
+  margin-right: 20px;
 }
 
 /* Logout Button */
@@ -56,10 +66,24 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s ease;
+  
+  margin-right: 20px;
 }
 
 .logout-btn:hover {
   background: #ff1e3c;
+}
+
+.login, .signup{
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  margin-right: 20px;
+  
+  transition: color 0.3s ease-in-out;
+}
+
+.login:hover, .signup:hover{
+  color: #8f8f8f;
 }
 
 /* Search Bar */
