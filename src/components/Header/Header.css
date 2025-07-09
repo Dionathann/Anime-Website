@@ -32,6 +32,32 @@ li {
   color: #8f8f8f;
 }
 
+.dropdown-wrapper {
+  position: relative;
+}
+
+
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 /* Navigation Links */
 .nav-links {
   display: flex;
@@ -102,7 +128,7 @@ li {
   padding: 8px 12px;
   font-size: 14px;
   border-radius: 20px;
-  width: 200px;
+  width: 85%;
   background: transparent;
   color: black;
 }
@@ -111,11 +137,63 @@ li {
   background: none;
   border: none;
   cursor: pointer;
+  width: 15%;
   font-size: 18px;
   margin-left: 5px;
+  margin-right: 10px;
   color: #ffcc00;
 }
 
 .search-bar button:hover {
   color: #ff9900;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #35353b;
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    right: 20px;
+    z-index: 99;
+    border-radius: 8px;
+    padding: 10px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        width: max-content;
+    min-width: 200px;           
+    max-width: 90vw;  
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 10px 20px;
+  }
+
+  .nav-links a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+    .nav-links a:hover {
+    background-color: #444;
+  }
+
+  .right-section {
+    align-items: flex-end;
+    gap: 10px;
+  }
+
+  .search-bar {
+    width: 200px;
+  }
 }

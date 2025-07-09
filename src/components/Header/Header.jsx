@@ -6,6 +6,7 @@ function Header() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [search, setSearch] = useState("");
   const [user, setUser] = useState(localStorage.getItem("user") || null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -54,27 +55,32 @@ function Header() {
 
   return (
     <nav className="navbar">
-      <div>
+      <div className="left-section">
         <div className="logo">
           <Link to="/">AniQu</Link>
         </div>
+          <div className="dropdown-wrapper">
+            <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+              ☰
+            </button>
 
-        <ul className="nav-links">
-          <li>
-            <Link to="/top-anime">Top Anime</Link>
-          </li>
-          <li>
-            <Link to="/genres">Genres</Link>
-          </li>
-          <li>
-            <Link to={`/seasonal/${year}/${season}`}>
-              Seasonal
-            </Link>
-          </li>
-        </ul>
+            <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
+              <li>
+                <Link to="/top-anime">Top Anime</Link>
+              </li>
+              <li>
+                <Link to="/genres">Genres</Link>
+              </li>
+              <li>
+                <Link to={`/seasonal/${year}/${season}`}>
+                  Seasonal
+                </Link>
+              </li>
+            </ul>
+          </div>
       </div>
 
-      <div>
+      <div className="right-section">
         {isAuthenticated ? (
           <>
             <li className="user">
