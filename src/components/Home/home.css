@@ -41,3 +41,9 @@ body {
     cursor: pointer;
     transform: scale(1.1);
 }
+
+@media (max-width: 640px) {
+    .home-grid-container {
+        grid-template-columns: 1fr;
+    }
+}
